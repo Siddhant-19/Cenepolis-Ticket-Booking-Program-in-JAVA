@@ -1,0 +1,391 @@
+import java.io.*;
+public class CINEPOLIS
+{ 
+    BufferedReader br  = new BufferedReader(new InputStreamReader(System.in));
+    PrintWriter pw=new PrintWriter(System.out,true);
+    // INSTANCE VARIABLES AND ARRAY DECLARATION
+
+    int b,e,d;
+    int m, date, month, tim, noseat, i=1, aud[]={3,2,1,1,2,3};
+    long mob;
+    String validSeat[]={"A1","A2","A5","A6","A7","A8","A9","A10","A11","B1","B3","B4","B5","B6","B7","B9","B11","C1","C2","C3","C6","C7","C8","C9","C11","D1","D4","D5","D7","D8","E1","E3","E5","E10","E11","F4","F5","F6","F8","F9","G1","G3","G4","G6","G10","G11","H1","H6","H7","H8","H10","H11","J1","J2","J3","J4","J6","J7","J8","J9","J10","I1","I4","I5","I8","I9","I11"};
+    String name,nmovie;
+    String mtim[]={"2 hrs 22mins","2 hrs 45 mins","1 hr 27 mins","2 hrs 29 mins","2 hrs 27 mins","1 hr 30 mins"};
+    String movie[]={"THE MARTIAN(UA / ENG)","PREM RATAN DHAN PAYO(U / HIN)","HE NAMED ME MALALA(U / ENG)","MUMBAI PUNE MUMBAI-2(U / MAR)","SPECTRE(UA / ENG)","HOTEL TRANSYLVANIA-2(UA / ENG)"},seatFinal[]=new String[100];
+    String time[]={"1)9:30am   2)7:00pm ","1)10:00am   2)4:00pm  ","1)10:30am  2)5:30pm ","1)2:00pm 2)9:00pm ","1)1:30pm 2)7:30pm  ","1)2:00pm 2)4:30pm  "};
+    public CINEPOLIS()// DEFAULT CONSTRUCTOR
+    {  
+        b=0; e=0; d=0; m=0; date=0; month=0; tim=0; noseat=0;
+        mob=0;
+        name=null; nmovie=null;
+    }
+
+    public void menu()throws IOException
+    {
+        pw.println("                       ********** WELCOME **********");
+        pw.println();
+        pw.println("                   ////### CINEPOLIS MULTIPLEX ###\\\\\\\\");
+        pw.println();
+        for(long i=1; i<=900000000; i++)// EMPTY LOOP FOR DELAY IN EXECUTION
+        {
+        }
+        pw.println("_______________________________________________________________________________");
+        pw.println("   ### PLEASE ENTER YOUR GOOD NAME ###");
+        name=br.readLine();
+        int z=1;
+        do
+        {
+            pw.println("   ### PLEASE ENTER YOUR MOBILE NUMBER ###");
+            try
+            {
+                mob=Long.parseLong(br.readLine());
+            }
+            catch(NumberFormatException e)
+            {
+                pw.println("** INVALID INPUT TRY AGAIN **");
+                continue;
+            }
+            break;
+        }while(z!=0);
+        pw.println();
+    }      
+
+    public void movie()throws IOException
+    {
+        int n=1, n1=1,mo=0;
+        while(n!=0)// n VALUE IS NOT CHANGED IN THE LOOP , BREAK STATEMENT PROVIDED TO TERMINATE
+        {
+            pw.println();
+            pw.println("   *THE CURRENT MOVIES ARE:");
+            pw.println();
+            pw.println("1)THE MARTIAN(UA / ENG)              2)STREE(A / HIN)");
+            pw.println("3)WOLF OF WALLSTREET(A / ENG)       4)USUAL SUSPECTS(UA / ENG)");
+            pw.println("5)SPECTRE(UA / ENG)                  6)HOTEL TRANSYLVANIA-2(UA / ENG)");
+            pw.println();
+            for(long i=1; i<=50000000; i++)// EMPTY LOOP FOR DELAY IN EXECUTION
+            {
+
+            }
+            do
+            {
+                pw.println("*** HI "+name+" NOW CHOOSE THE MOVIE NUMBER");
+                try
+                {
+                    mo=Integer.parseInt(br.readLine());
+                }
+                catch(NumberFormatException e)
+                {
+                    pw.println("** INVALID INPUT TRY AGAIN **");
+                    continue;
+                }
+
+                if(mo>6||mo<1)
+                {
+                    pw.println(" ** YOUR CHOICE IS INVALID PLEASE TRY AGAIN");
+                    continue;
+                }
+                else
+                    break;
+            }while(n!=0);
+            pw.println();
+            int w=1;
+            pw.println(" THE DATE IN NUMBERS :");
+            do
+            {
+                pw.println(" ENTER MONTH IN NUMBER(MM)");
+                try
+                {
+                    month=Integer.parseInt(br.readLine());
+                }
+                catch(NumberFormatException e)
+                {
+                    pw.println("** INVALID INPUT TRY AGAIN **");
+                    continue;
+                }
+                if(month>12||month<1)
+
+                {
+                    pw.println(" ** DATE ENTERTED IS INVALID PLEASE TRY AGAIN");
+                    continue;
+                }
+                else
+                    break;
+            }while(w!=0);
+            int k=1;
+            pw.println();
+            while(k!=0)
+            {
+                pw.println(" ENTER DATE IN NUMBERS(DD)");
+                try
+                {
+                    date=Integer.parseInt(br.readLine());
+                }
+                catch(NumberFormatException e)
+                {
+                    pw.println("** INVALID INPUT TRY AGAIN **");
+                    continue;
+                }
+
+                if(date>31||date<1)
+                {
+                    pw.println(" ** DATE ENTERTED IS INVALID PLEASE TRY AGAIN");
+                    continue;
+                }
+                else
+                    break;
+            }
+            m=mo-1;// m STORES INDEX VALUE OF ARRAYS
+            pw.println();
+            pw.println("  -------------------------------------------------------------------------");
+            pw.println();
+            pw.println("   THE MOVIE DETAILS ARE:");
+            pw.println();
+            pw.println("** MOVIE NAME AND TYPE : "+(movie[m]) );
+            pw.println();
+            pw.println("   AUDITORIUM NUMBER : "+aud[m]);
+            pw.println("   COST : BALCONY:160 ;  DELUX:140 ;  EXECUTIVE:100");
+            pw.println("   RUN TIME : "+ mtim[m]);
+            pw.println();
+            for(long i=1; i<=9000000; i++)// EMPTY LOOP FOR DELAY IN EXECUTION
+            {
+            }
+            int o=1;
+            while(o!=0)
+            {
+                pw.println("   TIMINGS ARE :");
+                pw.println("   "+time[m]+"3)[NO SUITABLE TIMINGS] WANT TO RETURN BACK TO CURRENT MOVIES");
+                pw.println("Choose the timings 1  or   2  or  3 ");
+                try
+                {
+                    tim=Integer.parseInt(br.readLine());
+                }
+                catch(NumberFormatException e)
+                {
+                    pw.println("** INVALID INPUT TRY AGAIN **");
+                    continue;
+                }
+
+                if(tim>3||tim<1)
+                {
+                    pw.println("INVALID CHOICE TRY AGAIN");
+                    continue;
+                }
+                else
+                    break;
+            }
+
+            if(tim==3)
+                continue;
+            else
+                break;
+        }
+    }    
+
+    public void seat()throws IOException
+    {
+        pw.println("  -------------------------------------------------------------------------");
+        int q=1;
+        while(q!=0)
+        {
+            pw.println("HOW MANY SEATS DO YOU WANT TO BOOK ?");
+            try
+            {
+                noseat=Integer.parseInt(br.readLine());
+            }
+            catch(NumberFormatException e)
+            {
+                pw.println("** INVALID INPUT TRY AGAIN **");
+                continue;
+            }
+
+            if(noseat<15)
+                break;
+            else
+            {
+                pw.println(" YOUR NUMBER OF SEATS EXCEEDS THE LIMIT(MAX 15 AT A TIME) PLEASE RE-ENTER ");
+                continue;
+            }
+        }
+        pw.println("             *********ENTER THE SEAT NOS.*********");
+        pw.println();
+        pw.println("SEATS BOOKED ALREADY: (*)");
+        pw.println("SEATS VACANT: (_)");
+        pw.println();
+        pw.println("         AUDITORIUM NO.- "+aud[m]);
+        pw.println("      1  2  3  4  5  6  7  8  9   10 11");
+        pw.println("  A  (_)(_)(*)(*)(_)(_)(_)(_)(_)  (_)(_)      | for example-");
+        pw.println("  B  (_)(*)(_)(_)(_)(_)(_)(*)(_)  (_)(*)      | column :1");
+        pw.println("              BALCONY- Rs.160/-               | row:    A");
+        pw.println("  C  (_)(_)(_)(*)(*)(_)(_)(_)(_)  (*)(_)      | Seat no.= A1(*WITHOUT SPACE*)");
+        pw.println("  D  (_)(*)(*)(_)(_)(*)(_)(_)(*)  (*)(*)");
+        pw.println("  E  (_)(*)(_)(*)(_)(*)(*)(*)(*)  (_)(_)");
+        pw.println("  F  (*)(*)(*)(_)(_)(_)(*)(_)(_)  (*)(*)");
+        pw.println("  G  (_)(*)(_)(_)(*)(_)(*)(*)(*)  (_)(_)");
+        pw.println("               DELUX- Rs.140/-");
+        pw.println("  H  (_)(*)(*)(*)(*)(_)(_)(_)(*)  (_)(_)");
+        pw.println("  J  (_)(_)(_)(_)(*)(_)(_)(_)(_)  (_)(*)");
+        pw.println("  I  (_)(*)(*)(_)(_)(*)(*)(_)(_)  (*)(_)");
+        pw.println("              EXECUTIVE- Rs.100/-");    
+        pw.println("   \\___________________________________/");
+        pw.println("                   SCREEN ");
+        for(long s=1; s<9999999; s++)// EMPTY LOOP FOR DELAY IN EXECUTION
+        {
+        }
+        int i,j;
+        String seat[]=new String[noseat], seat1[]=new String[noseat];
+        for( int x=0; x<noseat  ; x++)
+        {
+            int c=0, c1=0;
+            pw.println("enter seat number "+(x+1));
+            seat[x]=br.readLine();
+            for(int z=0;z<noseat;z++)
+            {
+                if(seat[x].equals(seat1[z]))//LINEAR SEARCH
+                    c1++;
+            }
+            if(c1==1)
+            {
+                pw.println("YOU HAVE ALREADY ENTERED THIS SEAT NO. PLEASE TRY AGAIN");    
+                x--;
+                continue;
+            }
+            for( int y=0; y<validSeat.length;y++)
+            {
+                if(seat[x].equalsIgnoreCase(validSeat[y]))//LINEAR SEARCH
+                {
+                    seat1[x]=seat[x];
+                    c++;
+                    break;
+                }
+            }
+            if(c==0)
+            {
+                pw.println("INVALID SEAT NUMBER,TRY AGAIN[DON'T ENTER SPACE/ ENTER ROW AND COLUMN BOTH]");
+                x--;
+                continue;
+            }
+        }
+        for( i=0;i<seat.length;i++)
+        {
+            seatFinal[i]=seat[i];
+            if(seat[i].equalsIgnoreCase("A1")||seat[i].equalsIgnoreCase("A2")||seat[i].equalsIgnoreCase("A5")||seat[i].equalsIgnoreCase("A6")||seat[i].equalsIgnoreCase("A7")||seat[i].equalsIgnoreCase("A8")||seat[i].equalsIgnoreCase("A9")||seat[i].equalsIgnoreCase("A10")||seat[i].equalsIgnoreCase("A11")||seat[i].equalsIgnoreCase("B1")||seat[i].equalsIgnoreCase("B3")||seat[i].equalsIgnoreCase("B4")||seat[i].equalsIgnoreCase("B5")||seat[i].equalsIgnoreCase("B6")||seat[i].equalsIgnoreCase("B7")||seat[i].equalsIgnoreCase("B9")||seat[i].equalsIgnoreCase("B11"))
+                b++;
+            if(seat[i].equalsIgnoreCase("C1")||seat[i].equalsIgnoreCase("C2")||seat[i].equalsIgnoreCase("C3")||seat[i].equalsIgnoreCase("C6")||seat[i].equalsIgnoreCase("C7")||seat[i].equalsIgnoreCase("C8")||seat[i].equalsIgnoreCase("C9")||seat[i].equalsIgnoreCase("C11")||seat[i].equalsIgnoreCase("D1")||seat[i].equalsIgnoreCase("D4")||seat[i].equalsIgnoreCase("D5")||seat[i].equalsIgnoreCase("D7")||seat[i].equalsIgnoreCase("D8")||seat[i].equalsIgnoreCase("E1")||seat[i].equalsIgnoreCase("E3")||seat[i].equalsIgnoreCase("E5")||seat[i].equalsIgnoreCase("E10")||seat[i].equalsIgnoreCase("E11")||seat[i].equalsIgnoreCase("F4")||seat[i].equalsIgnoreCase("F5")||seat[i].equalsIgnoreCase("F6")||seat[i].equalsIgnoreCase("F8")||seat[i].equalsIgnoreCase("F9")||seat[i].equalsIgnoreCase("G1")||seat[i].equalsIgnoreCase("G3")||seat[i].equalsIgnoreCase("G4")||seat[i].equalsIgnoreCase("G6")||seat[i].equalsIgnoreCase("G10")||seat[i].equalsIgnoreCase("G11"))
+                d++;
+            if(seat[i].equalsIgnoreCase("H1")||seat[i].equalsIgnoreCase("H6")||seat[i].equalsIgnoreCase("H7")||seat[i].equalsIgnoreCase("H8")||seat[i].equalsIgnoreCase("H10")||seat[i].equalsIgnoreCase("H11")||seat[i].equalsIgnoreCase("J1")||seat[i].equalsIgnoreCase("J2")||seat[i].equalsIgnoreCase("J3")||seat[i].equalsIgnoreCase("J4")||seat[i].equalsIgnoreCase("J6")||seat[i].equalsIgnoreCase("J7")||seat[i].equalsIgnoreCase("J8")||seat[i].equalsIgnoreCase("J9")||seat[i].equalsIgnoreCase("J10")||seat[i].equalsIgnoreCase("I1")||seat[i].equalsIgnoreCase("I4")||seat[i].equalsIgnoreCase("I5")||seat[i].equalsIgnoreCase("I8")||seat[i].equalsIgnoreCase("I9")||seat[i].equalsIgnoreCase("I11"))
+                e++;
+        }
+    }
+
+    public void bill()throws IOException
+    {
+        int total=(b*160)+(d*140)+(e*100);
+        pw.println();
+        int yn;
+        int b=1;
+        while(b!=0)
+        {
+            pw.println("YOUR TOTAL AMOUNT IS: "+total+" ** DO YOU WANT TO PROCEED TO BILLING ENTER 1 for YES OR 2 for NO");
+            try
+            {
+                yn=Integer.parseInt(br.readLine());
+            }
+            catch(NumberFormatException e)
+            {
+                pw.println("INVALID CHOICE PLEASE RE-ENTER IN WORDS");
+                continue;
+            }
+            if(yn==(2))
+            {
+                pw.println(" **** YOUR BOOKING PROCESS HAS BEEN CANCELED ****");
+                break;
+            }
+            pw.println("_______________________________________________________________________________");
+            pw.println();
+            pw.println("              -----------------------------------------------");
+            pw.println("              !!!!! :::: CINEPOLIS MULTIPLEX:-BILL :::: !!!!!");
+            pw.println();
+            pw.println("              NAME :"+name+"\tMOBILE NO.: "+mob);
+            pw.println("              DATE : "+date+"."+month+".2015");
+            pw.println();
+            pw.println("              TYPE\t\tNO. OF SEATS\t\tCOST");
+            pw.println();
+            pw.println("              BALCONY\t\t    "+b+"\t\t\t"+b*160);
+            pw.println("              DELUX\t\t    "+d+"\t\t\t"+ d*140);
+            pw.println("              EXECUTIVE\t\t    "+e+"\t\t\t"+e*100);
+            pw.println("                              --------------------------------"); 
+            pw.println("              TOTAL = \t\t    "+(b+d+e)+"\t\t\t"+(total));
+            pw.println("              ENTERTAINMENT TAX(VAT: 15%)=\t\t"+((15.0/100)*total));
+            pw.println("                              --------------------------------");
+            pw.println("              GRAND TOTAL = \t\t\t\t"+Math.round(((15.0/100)*total )+ total ));
+            pw.println("              -----------------------------------------------");
+            pw.println("                       $$$$ TICKET--CINEPOLIS $$$$ ");
+            pw.println();
+            pw.println("               DATE : "+date+"."+month+".2015");
+            pw.println("               AUDITORIUM NUMBER: "+aud[m]); 
+            pw.print("               YOUR SEAT NUMBERS ARE :  ");
+            for (int l=0; l<noseat; l++) 
+                pw.print(seatFinal[l].toUpperCase()+"  ");
+            pw.println();
+            pw.println();
+            pw.println(" ###$$$** THANK YOU FOR YOUR VISIT, HOPE YOU ENJOY YOUR MOVIE **$$$###");
+            pw.println("_______________________________________________________________________________");
+            for(long g=1; g<=9999999; g++)// EMPTY LOOP FOR DELAY IN EXECUTION
+            {
+            }
+            break;
+        } 
+        int p=1, ch;
+
+        while(p!=0)
+        {
+            pw.println("*** DO YOU WISH TO CONTINUE WITH BOOKING OF ANOTHER MOVIE ? ***");
+            pw.println("    1. YES              2.NO (EXIT)");
+            try
+            {
+                ch=Integer.parseInt(br.readLine());
+            }
+            catch(NumberFormatException e)
+            {
+                pw.println("** INVALID INPUT TRY AGAIN **");
+                continue;
+            }
+
+            switch(ch)
+            {
+                case 1:
+                CINEPOLIS obj=new CINEPOLIS();
+                obj.menu();
+                obj.movie();
+                obj.seat();
+                obj.bill();
+                break;
+
+                case 2:
+
+                break;
+
+                default:
+                pw.println("INVALID CHOICE ENTER AGAIN");
+                p=2;
+                break;
+            }
+            if(p==2)
+            {
+                p=1;
+                continue;
+            }
+            else
+                break;
+        }
+    }
+
+    public static void main(String args[])throws IOException
+    {
+        CINEPOLIS obj1=new CINEPOLIS();
+        obj1.menu();
+        obj1.movie();
+        obj1.seat();
+        obj1.bill();
+    }
+}
